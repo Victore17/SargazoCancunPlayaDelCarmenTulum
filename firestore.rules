@@ -1,0 +1,49 @@
+rules_version = '2';
+
+// Reglas de seguridad de Cloud Firestore para la app Sargazo Cancún Playa del Carmen Tulum.
+//
+// - Cualquiera puede leer los semáforos publicados.
+// - Solo puede escribir una cuenta que tenga un documento en admins/{uid}.
+//   Ese documento se crea a mano en la consola de Firebase; la app nunca lo escribe.
+// - La pantalla oculta de la app no es la protección: estas reglas sí lo son.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function isValidLevel(level) {
+      return level in ['NO_SARGASSUM', 'LOW', 'MODERATE', 'ABUNDANT', 'EXCESSIVE'];
+    }
+
+    // Documento semaforos/{yyyy-MM-dd}: { date, publishedAt, beaches: [ { name, level } ] }
+    function isValidSemaforo(date) {
+      let data = request.resource.data;
+      return data.keys().hasOnly(['date', 'publishedAt', 'beaches'])
+        && data.date is string
+        && data.date == date
+        && date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && data.publishedAt == request.time
+        && data.beaches is list
+        && data.beaches.size() > 0
+        && data.beaches.size() <= 300
+        // Se revisa la primera playa como muestra (las reglas no pueden recorrer listas).
+        && data.beaches[0].name is string
+        && isValidLevel(data.beaches[0].level);
+    }
+
+    match /semaforos/{date} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidSemaforo(date);
+      allow delete: if isAdmin();
+    }
+
+    // Cada usuario solo puede comprobar si él mismo es administrador.
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+  }
+}

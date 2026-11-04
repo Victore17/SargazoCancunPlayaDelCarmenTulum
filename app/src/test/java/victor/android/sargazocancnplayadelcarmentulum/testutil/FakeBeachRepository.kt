@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.map
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.Beach
+import victor.android.sargazocancnplayadelcarmentulum.domain.model.BeachStatus
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.LevelRecord
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.BeachRepository
 import java.time.LocalDate
@@ -12,8 +13,10 @@ import java.time.LocalDate
 /** Repositorio falso para probar ViewModels sin base de datos. */
 class FakeBeachRepository : BeachRepository {
     val beaches = MutableStateFlow<List<Beach>>(emptyList())
+    val statuses = MutableStateFlow<List<BeachStatus>>(emptyList())
 
     override fun observeBeaches(): Flow<List<Beach>> = beaches
+    override fun observeBeachStatuses(): Flow<List<BeachStatus>> = statuses
     override fun observeFavoriteBeaches(): Flow<List<Beach>> =
         beaches.map { list -> list.filter { it.isFavorite } }
     override fun observeBeach(beachId: Long): Flow<Beach?> =

@@ -16,5 +16,9 @@ data object FavoritesRoute
 @Serializable
 data object SettingsRoute
 
+/** Pantalla oculta de administración (7 toques en "Ajustes"). */
+@Serializable
+data object AdminRoute
+
 @Serializable
 data class BeachDetailRoute(val beachId: Long)

@@ -19,6 +19,7 @@ Nombre de la app: Sargazo Cancún Playa del Carmen Tulum. Proyecto de portafolio
 - Retrofit (clima con Open-Meteo)
 - ML Kit Text Recognition (leer nombres de playas en la imagen)
 - WorkManager (revisión periódica y notificaciones)
+- Firebase Authentication (inicio de sesión del administrador) y Cloud Firestore (niveles publicados que leen todas las apps)
 
 ## Diseño y librerías
 
@@ -35,11 +36,13 @@ Usar siempre las versiones estables más recientes, administradas con el catálo
 - ML Kit Text Recognition
 - WorkManager
 - DataStore (guardar los ajustes de notificaciones)
+- Firebase (BOM de Firebase): Authentication con correo y contraseña y Cloud Firestore
 - Pruebas: JUnit, Turbine para Flows y pruebas de Compose
 
 ## Fuente de datos
 
-- Semáforo oficial del Gobierno de Quintana Roo (SEMA / Coordinación General de Comunicación, cgc.qroo.gob.mx). No usar imágenes de periódicos.
+- Semáforo oficial del Gobierno de Quintana Roo, publicado por la SEMA en sus redes oficiales (Facebook semaqroo.quintanaroo, Instagram semaquintanaroo). No usar imágenes de periódicos.
+- Las redes de Meta no permiten descargar la imagen de forma automática (login, condiciones de uso, tokens). Por eso el administrador sube la imagen oficial desde una pantalla oculta, la app la procesa y publica los niveles en Firestore. Todas las apps leen Firestore.
 - Colores: verde = escasa, amarillo = moderada, naranja = alta, rojo = muy alta, azul = sin dato.
 - Mostrar en la app la fuente de los datos y un aviso de que no es una app oficial.
 
@@ -56,15 +59,19 @@ Usar siempre las versiones estables más recientes, administradas con el catálo
 - Limitar el mapa a la zona de playas (Tulum a Cancún, con Cozumel si viene en el semáforo) usando CameraConstraints (boundingBox, minZoom y maxZoom).
 - Mostrar la atribución "© OpenStreetMap" y hacer un uso ligero de los mosaicos públicos. No se necesita clave.
 
-## Etapa 3: Leer el semáforo (Opus)
+## Etapa 3: Leer el semáforo y publicarlo en Firebase (Opus)
 
-- Descargar la imagen oficial del semáforo.
-- Detectar que la imagen es un semáforo de sargazo (texto de la publicación y palabras clave leídas con ML Kit).
+- Pantalla oculta de administración: al tocar 7 veces seguidas "Ajustes" en la barra de navegación aparece una nueva opción.
+- La pantalla oculta pide iniciar sesión con Firebase Authentication (correo y contraseña; el usuario se crea a mano en la consola y no se permiten registros nuevos).
+- Subir la foto del semáforo con el selector de fotos de Android.
+- Detectar que la imagen es un semáforo de sargazo (palabras clave leídas con ML Kit).
 - Leer los nombres de las playas con ML Kit.
 - Leer el color de cada playa en la imagen (Bitmap.getPixel) y convertirlo a nivel.
 - Cruzar nombres con la tabla de coordenadas. Playas nuevas sin coordenadas: aparecen en la lista como "sin ubicación".
-- Guardar resultados en Room.
-- Pintar en el mapa un círculo o marcador por playa con su color.
+- Revisar y corregir el nivel detectado de cada playa antes de publicar.
+- Publicar en Cloud Firestore solo los datos (no la imagen): un documento por semáforo con su fecha y la lista de playas con su nivel.
+- Reglas de seguridad de Firestore: todos pueden leer, solo el UID del administrador puede escribir. La pantalla oculta no es la protección; las reglas sí.
+- Todas las apps leen Firestore, guardan una copia en Room (uso sin internet e historial) y pintan en el mapa un círculo por playa con su color.
 
 ## Etapa 4: Detalle de playa (Sonnet)
 
@@ -79,7 +86,7 @@ Usar siempre las versiones estables más recientes, administradas con el catálo
 
 ## Etapa 6: Notificaciones y limpieza (Sonnet)
 
-- WorkManager revisa cada 3 a 6 horas si hay semáforo nuevo (comparando fecha o huella de la imagen).
+- WorkManager revisa cada 3 a 6 horas si hay un semáforo nuevo publicado en Firestore (comparando la fecha del documento más reciente con la guardada en Room).
 - Notificación 1, actualización general: avisa que hay información nueva para entrar a revisar.
 - Notificación 2, cambios en favoritas: compara el nivel nuevo con el guardado y avisa si una favorita tiene más o menos sargazo. Si cambian varias, juntarlas en una sola notificación.
 - Limpieza automática: borrar registros de niveles con más de dos meses. Favoritas y ajustes nunca se borran.
@@ -114,3 +121,4 @@ Usar siempre las versiones estables más recientes, administradas con el catálo
 3. Lista de playas
 4. Favoritas
 5. Ajustes
+6. Administración (oculta: 7 toques en "Ajustes")

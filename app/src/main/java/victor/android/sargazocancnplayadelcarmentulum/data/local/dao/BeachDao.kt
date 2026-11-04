@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.BeachEntity
+import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.BeachWithLevelEntity
 
 @Dao
 interface BeachDao {
@@ -13,11 +14,30 @@ interface BeachDao {
     @Query("SELECT * FROM beaches ORDER BY name COLLATE NOCASE")
     fun observeAll(): Flow<List<BeachEntity>>
 
+    @Query("SELECT * FROM beaches ORDER BY name COLLATE NOCASE")
+    suspend fun getAll(): List<BeachEntity>
+
     @Query("SELECT * FROM beaches WHERE is_favorite = 1 ORDER BY name COLLATE NOCASE")
     fun observeFavorites(): Flow<List<BeachEntity>>
 
     @Query("SELECT * FROM beaches WHERE id = :beachId")
     fun observeById(beachId: Long): Flow<BeachEntity?>
+
+    /**
+     * Cada playa con su nivel en el semáforo más reciente (la fecha más alta guardada).
+     * Las playas que no aparecen en ese semáforo traen level y level_date en null.
+     */
+    @Query(
+        """
+        SELECT beaches.*, level_records.level AS level, level_records.date AS level_date
+        FROM beaches
+        LEFT JOIN level_records
+            ON level_records.beach_id = beaches.id
+            AND level_records.date = (SELECT MAX(date) FROM level_records)
+        ORDER BY beaches.name COLLATE NOCASE
+        """,
+    )
+    fun observeAllWithLatestLevel(): Flow<List<BeachWithLevelEntity>>
 
     /** Inserta playas; las que ya existen con el mismo nombre se ignoran. */
     @Insert(onConflict = OnConflictStrategy.IGNORE)

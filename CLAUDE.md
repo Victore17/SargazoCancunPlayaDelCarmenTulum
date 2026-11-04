@@ -26,6 +26,7 @@ Reglas del proyecto para Claude Code. Nombre de la app: Sargazo Cancún Playa de
 - Coroutines y Flows. Usar StateFlow en los ViewModels, no LiveData.
 - Retrofit, OkHttp y Kotlinx Serialization para red.
 - MapLibre Compose (maplibre-compose) con mosaicos de OpenStreetMap para el mapa, sin clave de API ni cuenta de pago. No usar Google Maps. ML Kit Text Recognition para leer la imagen, WorkManager para tareas en segundo plano, DataStore para ajustes, Coil para imágenes.
+- Firebase Authentication (correo y contraseña, solo para el administrador) y Cloud Firestore (niveles publicados), usando el BOM de Firebase.
 - Versiones estables más recientes, declaradas en gradle/libs.versions.toml y usando el Compose BOM.
 
 ## Estilo de código
@@ -40,12 +41,14 @@ Reglas del proyecto para Claude Code. Nombre de la app: Sargazo Cancún Playa de
 
 - El mapa no usa claves de API (MapLibre + OpenStreetMap). Si en el futuro se agrega algún servicio con clave, va en local.properties y nunca se sube al repositorio.
 - Mostrar siempre la atribución "© OpenStreetMap" en el mapa y hacer un uso ligero de los mosaicos públicos.
-- Revisa que .gitignore incluya local.properties, archivos de build y claves.
+- Revisa que .gitignore incluya local.properties, google-services.json, archivos de build y claves.
+- La pantalla oculta de administración no es una medida de seguridad. La escritura en Firestore se protege con Firebase Authentication y reglas de seguridad que solo permiten escribir al UID del administrador. Nunca pongas correos ni contraseñas en el código.
 - No pongas datos personales ni claves en el código.
 
 ## Datos
 
-- Fuente: semáforo oficial del Gobierno de Quintana Roo. No usar imágenes de periódicos.
+- Fuente: semáforo oficial del Gobierno de Quintana Roo (SEMA). No usar imágenes de periódicos.
+- El administrador sube la imagen oficial desde la pantalla oculta; la app publica en Firestore solo los niveles, no la imagen. Las apps leen Firestore y guardan una copia en Room.
 - Niveles: verde escasa, amarillo moderada, naranja alta, rojo muy alta, azul sin dato.
 - Historial de niveles: guardar solo los últimos dos meses. Favoritas y ajustes nunca se borran.
 - Mostrar en la app la fuente de los datos y que no es una app oficial.

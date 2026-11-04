@@ -2,21 +2,42 @@ package victor.android.sargazocancnplayadelcarmentulum.testutil
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import victor.android.sargazocancnplayadelcarmentulum.data.local.dao.BeachDao
 import victor.android.sargazocancnplayadelcarmentulum.data.local.dao.LevelRecordDao
 import victor.android.sargazocancnplayadelcarmentulum.data.local.dao.SettingsDao
 import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.BeachEntity
+import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.BeachWithLevelEntity
 import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.LevelRecordEntity
 import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.SettingsEntity
+import java.time.LocalDate
 
-/** DAO de playas en memoria que imita el comportamiento de Room. */
-class FakeBeachDao(initial: List<BeachEntity> = emptyList()) : BeachDao {
+/**
+ * DAO de playas en memoria que imita el comportamiento de Room.
+ * [levelRecordDao] se usa para la consulta de playas con su nivel más reciente.
+ */
+class FakeBeachDao(
+    initial: List<BeachEntity> = emptyList(),
+    private val levelRecordDao: FakeLevelRecordDao? = null,
+) : BeachDao {
     val beaches = MutableStateFlow(initial)
 
     override fun observeAll(): Flow<List<BeachEntity>> =
         beaches.map { list -> list.sortedBy { it.name.lowercase() } }
+
+    override suspend fun getAll(): List<BeachEntity> = beaches.value.sortedBy { it.name.lowercase() }
+
+    override fun observeAllWithLatestLevel(): Flow<List<BeachWithLevelEntity>> =
+        combine(observeAll(), levelRecordDao?.records ?: flowOf(emptyList())) { list, records ->
+            val latest = records.maxOfOrNull { it.date }
+            list.map { beach ->
+                val record = records.firstOrNull { it.beachId == beach.id && it.date == latest }
+                BeachWithLevelEntity(beach = beach, level = record?.level, levelDate = record?.date)
+            }
+        }
 
     override fun observeFavorites(): Flow<List<BeachEntity>> =
         observeAll().map { list -> list.filter { it.isFavorite } }
@@ -58,6 +79,8 @@ class FakeLevelRecordDao : LevelRecordDao {
             }
         }
     }
+
+    override suspend fun latestDate(): LocalDate? = records.value.maxOfOrNull { it.date }
 
     override suspend fun deleteBefore(epochDay: Long) = records.update { list ->
         list.filter { it.date.toEpochDay() >= epochDay }

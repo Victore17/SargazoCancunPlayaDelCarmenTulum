@@ -12,7 +12,7 @@ import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.Settings
 
 @Database(
     entities = [BeachEntity::class, LevelRecordEntity::class, SettingsEntity::class],
-    version = 1,
+    version = 3,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)

@@ -7,6 +7,7 @@ import victor.android.sargazocancnplayadelcarmentulum.data.local.dao.LevelRecord
 import victor.android.sargazocancnplayadelcarmentulum.data.mapper.toDomain
 import victor.android.sargazocancnplayadelcarmentulum.data.mapper.toEntity
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.Beach
+import victor.android.sargazocancnplayadelcarmentulum.domain.model.BeachStatus
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.LevelRecord
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.BeachRepository
 import java.time.LocalDate
@@ -19,6 +20,9 @@ class BeachRepositoryImpl @Inject constructor(
 
     override fun observeBeaches(): Flow<List<Beach>> =
         beachDao.observeAll().map { beaches -> beaches.map { it.toDomain() } }
+
+    override fun observeBeachStatuses(): Flow<List<BeachStatus>> =
+        beachDao.observeAllWithLatestLevel().map { rows -> rows.map { it.toDomain() } }
 
     override fun observeFavoriteBeaches(): Flow<List<Beach>> =
         beachDao.observeFavorites().map { beaches -> beaches.map { it.toDomain() } }

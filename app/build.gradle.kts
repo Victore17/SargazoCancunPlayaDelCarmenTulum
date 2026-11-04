@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.room)
+    // Lee app/google-services.json (no se sube al repositorio).
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -79,6 +81,23 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.play.services)
+
+    // Firebase: inicio de sesión del administrador y semáforos publicados
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+
+    // Inicio de sesión con Google del administrador
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.google.id)
+
+    // ML Kit: lectura de los nombres de las playas en la imagen
+    implementation(libs.mlkit.text.recognition)
+
+    // Coil: vista previa de la foto elegida
+    implementation(libs.coil.compose)
 
     // Pruebas unitarias
     testImplementation(libs.junit)

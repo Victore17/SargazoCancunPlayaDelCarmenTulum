@@ -68,18 +68,18 @@ class BeachRepositoryImplTest {
         repository.saveLevelRecords(
             listOf(
                 LevelRecord(beachId = 1, level = SargassumLevel.LOW, date = day1),
-                LevelRecord(beachId = 1, level = SargassumLevel.HIGH, date = day2),
+                LevelRecord(beachId = 1, level = SargassumLevel.ABUNDANT, date = day2),
                 LevelRecord(beachId = 2, level = SargassumLevel.MODERATE, date = day1),
             ),
         )
         repository.saveLevelRecords(
-            listOf(LevelRecord(beachId = 1, level = SargassumLevel.VERY_HIGH, date = day2)),
+            listOf(LevelRecord(beachId = 1, level = SargassumLevel.EXCESSIVE, date = day2)),
         )
 
         repository.observeLevelHistory(1).test {
             val history = awaitItem()
             assertEquals(listOf(day2, day1), history.map { it.date })
-            assertEquals(SargassumLevel.VERY_HIGH, history.first().level)
+            assertEquals(SargassumLevel.EXCESSIVE, history.first().level)
         }
     }
 
@@ -91,7 +91,7 @@ class BeachRepositoryImplTest {
         repository.saveLevelRecords(
             listOf(
                 LevelRecord(beachId = 1, level = SargassumLevel.LOW, date = old),
-                LevelRecord(beachId = 1, level = SargassumLevel.HIGH, date = recent),
+                LevelRecord(beachId = 1, level = SargassumLevel.ABUNDANT, date = recent),
             ),
         )
 

@@ -6,6 +6,7 @@
     <string name="nav_beach_list">Playas</string>
     <string name="nav_favorites">Favoritas</string>
     <string name="nav_settings">Ajustes</string>
+    <string name="nav_admin">Admin</string>
 
     <!-- Pantallas -->
     <string name="screen_map_title">Mapa de sargazo</string>
@@ -20,13 +21,88 @@
     <string name="beach_detail_id">Playa con id %d</string>
 
     <!-- Fuente de datos y aviso -->
-    <string name="data_source">Fuente: semáforo de sargazo del Gobierno del Estado de Quintana Roo (SEMA).</string>
+    <string name="data_source">Fuente: semáforo de sargazo de la SEMA Quintana Roo, con datos de la Red de Monitoreo del Sargazo.</string>
     <string name="unofficial_disclaimer">Esta app no es oficial ni está afiliada al Gobierno de Quintana Roo.</string>
 
-    <!-- Niveles de sargazo -->
-    <string name="level_low">Escasa</string>
-    <string name="level_moderate">Moderada</string>
-    <string name="level_high">Alta</string>
-    <string name="level_very_high">Muy alta</string>
+    <!-- Niveles de sargazo (nombres del semáforo oficial) -->
+    <string name="level_no_sargassum">Sin sargazo</string>
+    <string name="level_low">Bajo</string>
+    <string name="level_moderate">Moderado</string>
+    <string name="level_abundant">Abundante</string>
+    <string name="level_excessive">Excesivo</string>
     <string name="level_no_data">Sin dato</string>
+
+    <!-- Mapa -->
+    <string name="map_semaforo_date">Semáforo del %1$s</string>
+    <string name="map_no_semaforo">Aún no hay semáforo publicado.</string>
+    <plurals name="map_beaches_without_location">
+        <item quantity="one">%1$d playa sin ubicación en el mapa</item>
+        <item quantity="other">%1$d playas sin ubicación en el mapa</item>
+    </plurals>
+    <string name="map_show_more">Ver más</string>
+    <string name="map_show_less">Ver menos</string>
+    <string name="map_sync_error">No se pudo actualizar. Se muestra el último semáforo guardado.</string>
+    <string name="map_refresh">Actualizar</string>
+
+    <!-- Administración (pantalla oculta) -->
+    <string name="admin_title">Administración</string>
+    <string name="admin_checking_session">Revisando sesión…</string>
+    <string name="admin_sign_in_intro">Inicia sesión con tu cuenta de Google de administrador para publicar el semáforo.</string>
+    <string name="admin_sign_in_google">Iniciar sesión con Google</string>
+    <string name="admin_sign_out">Cerrar sesión</string>
+    <string name="admin_signed_in_as">Sesión: %1$s</string>
+    <string name="admin_not_admin">Esta cuenta no tiene permiso para publicar, o no hay conexión para comprobarlo.</string>
+    <string name="admin_pick_intro">Elige la imagen oficial del semáforo publicada por la SEMA. La app lee los nombres y colores; después podrás revisarlos antes de publicar.</string>
+    <string name="admin_pick_image">Elegir foto del semáforo</string>
+    <string name="admin_processing">Leyendo la imagen…</string>
+    <string name="admin_review_title">Revisa antes de publicar</string>
+    <plurals name="admin_review_summary">
+        <item quantity="one">%1$d playa detectada en la imagen.</item>
+        <item quantity="other">%1$d playas detectadas en la imagen.</item>
+    </plurals>
+    <plurals name="admin_review_unlabeled">
+        <item quantity="one">%1$d círculo de color sin nombre reconocido.</item>
+        <item quantity="other">%1$d círculos de color sin nombre reconocido.</item>
+    </plurals>
+    <string name="admin_attention_title">Hay datos que revisar</string>
+    <string name="admin_attention_hint">Corrige lo que falte tocando cada playa. Lo que no tenga nivel no se publica.</string>
+    <plurals name="admin_attention_new">
+        <item quantity="one">%1$d nombre nuevo, no está en el catálogo y quedará sin ubicación: %2$s.</item>
+        <item quantity="other">%1$d nombres nuevos, no están en el catálogo y quedarán sin ubicación: %2$s.</item>
+    </plurals>
+    <plurals name="admin_attention_missing">
+        <item quantity="one">%1$d playa del catálogo no apareció en la imagen y quedará como “Sin dato”.</item>
+        <item quantity="other">%1$d playas del catálogo no aparecieron en la imagen y quedarán como “Sin dato”.</item>
+    </plurals>
+    <string name="admin_section_attention">Requieren revisión</string>
+    <string name="admin_missing_beach">No apareció en la imagen</string>
+    <string name="admin_confirm_title">Hay datos por revisar</string>
+    <string name="admin_confirm_message">Todavía hay playas sin revisar: nombres nuevos, playas que no aparecieron o círculos sin nombre. ¿Quieres publicar de todos modos?</string>
+    <string name="admin_confirm_publish">Publicar de todos modos</string>
+    <string name="admin_confirm_keep">Seguir revisando</string>
+    <string name="admin_date">Fecha: %1$s</string>
+    <string name="admin_date_not_detected">No se pudo leer la fecha en la imagen. Revísala.</string>
+    <string name="admin_change_date">Cambiar fecha</string>
+    <string name="admin_section_ok">Con nivel</string>
+    <string name="admin_new_beach">Nueva · sin ubicación</string>
+    <string name="admin_change_level">Cambiar nivel de %1$s</string>
+    <string name="admin_publish">Publicar</string>
+    <string name="admin_publishing">Publicando…</string>
+    <string name="admin_cancel">Cancelar</string>
+    <string name="admin_accept">Aceptar</string>
+    <plurals name="admin_published">
+        <item quantity="one">Semáforo del %1$s publicado con %2$d playa.</item>
+        <item quantity="other">Semáforo del %1$s publicado con %2$d playas.</item>
+    </plurals>
+    <string name="admin_upload_another">Subir otra foto</string>
+    <string name="admin_selected_image">Imagen elegida del semáforo</string>
+    <string name="admin_error_invalid_credentials">Google no aceptó la cuenta. Inténtalo de nuevo.</string>
+    <string name="admin_error_google_not_configured">Falta activar el inicio de sesión con Google en Firebase (huella SHA-1 y google-services.json).</string>
+    <string name="admin_error_no_google_account">No hay ninguna cuenta de Google en este celular. Agrega una en Ajustes.</string>
+    <string name="admin_error_network">Sin conexión. Inténtalo de nuevo.</string>
+    <string name="admin_error_sign_in">No se pudo iniciar sesión. Inténtalo de nuevo.</string>
+    <string name="admin_error_image_read">No se pudo leer la imagen. Prueba con otra.</string>
+    <string name="admin_error_not_semaforo">La imagen no parece un semáforo de sargazo.</string>
+    <string name="admin_error_nothing_to_publish">No hay ninguna playa con nivel para publicar.</string>
+    <string name="admin_error_publish">No se pudo publicar. Revisa tu conexión y que tu cuenta tenga permiso.</string>
 </resources>

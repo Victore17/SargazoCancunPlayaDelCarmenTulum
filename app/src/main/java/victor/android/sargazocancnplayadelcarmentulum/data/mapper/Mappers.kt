@@ -1,13 +1,16 @@
 package victor.android.sargazocancnplayadelcarmentulum.data.mapper
 
 import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.BeachEntity
+import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.BeachWithLevelEntity
 import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.LevelRecordEntity
 import victor.android.sargazocancnplayadelcarmentulum.data.local.entity.SettingsEntity
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.AppSettings
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.Beach
+import victor.android.sargazocancnplayadelcarmentulum.domain.model.BeachStatus
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.GeoPoint
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.ImagePosition
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.LevelRecord
+import victor.android.sargazocancnplayadelcarmentulum.domain.model.SargassumLevel
 
 // Conversión entre entidades de Room y modelos de dominio.
 
@@ -29,6 +32,13 @@ fun Beach.toEntity(): BeachEntity = BeachEntity(
     imageY = imagePosition?.y,
     isFavorite = isFavorite,
     notificationsEnabled = notificationsEnabled,
+)
+
+/** Una playa que no aparece en el semáforo más reciente queda como [SargassumLevel.NO_DATA]. */
+fun BeachWithLevelEntity.toDomain(): BeachStatus = BeachStatus(
+    beach = beach.toDomain(),
+    level = level ?: SargassumLevel.NO_DATA,
+    date = levelDate,
 )
 
 fun LevelRecordEntity.toDomain(): LevelRecord = LevelRecord(

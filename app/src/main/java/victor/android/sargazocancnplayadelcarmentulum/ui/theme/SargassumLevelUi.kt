@@ -5,23 +5,25 @@ import androidx.compose.ui.graphics.Color
 import victor.android.sargazocancnplayadelcarmentulum.R
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.SargassumLevel
 
-/** Color de cada nivel, igual al del semáforo oficial. */
+/** Color de cada nivel, tomado de la leyenda del semáforo oficial. */
 val SargassumLevel.color: Color
     get() = when (this) {
-        SargassumLevel.LOW -> Color(0xFF2E9E44)
-        SargassumLevel.MODERATE -> Color(0xFFF2C200)
-        SargassumLevel.HIGH -> Color(0xFFF07C00)
-        SargassumLevel.VERY_HIGH -> Color(0xFFD32F2F)
-        SargassumLevel.NO_DATA -> Color(0xFF1E6FD9)
+        SargassumLevel.NO_SARGASSUM -> Color(0xFF02B0F1)
+        SargassumLevel.LOW -> Color(0xFF00AF50)
+        SargassumLevel.MODERATE -> Color(0xFFFFE600)
+        SargassumLevel.ABUNDANT -> Color(0xFFFDA800)
+        SargassumLevel.EXCESSIVE -> Color(0xFFE5231A)
+        SargassumLevel.NO_DATA -> Color(0xFF9E9E9E)
     }
 
 /** Nombre visible del nivel. */
 @get:StringRes
 val SargassumLevel.labelRes: Int
     get() = when (this) {
+        SargassumLevel.NO_SARGASSUM -> R.string.level_no_sargassum
         SargassumLevel.LOW -> R.string.level_low
         SargassumLevel.MODERATE -> R.string.level_moderate
-        SargassumLevel.HIGH -> R.string.level_high
-        SargassumLevel.VERY_HIGH -> R.string.level_very_high
+        SargassumLevel.ABUNDANT -> R.string.level_abundant
+        SargassumLevel.EXCESSIVE -> R.string.level_excessive
         SargassumLevel.NO_DATA -> R.string.level_no_data
     }

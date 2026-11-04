@@ -2,6 +2,7 @@ package victor.android.sargazocancnplayadelcarmentulum.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.Beach
+import victor.android.sargazocancnplayadelcarmentulum.domain.model.BeachStatus
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.LevelRecord
 import java.time.LocalDate
 
@@ -9,6 +10,9 @@ import java.time.LocalDate
 interface BeachRepository {
 
     fun observeBeaches(): Flow<List<Beach>>
+
+    /** Cada playa con su nivel en el semáforo más reciente. */
+    fun observeBeachStatuses(): Flow<List<BeachStatus>>
 
     fun observeFavoriteBeaches(): Flow<List<Beach>>
 

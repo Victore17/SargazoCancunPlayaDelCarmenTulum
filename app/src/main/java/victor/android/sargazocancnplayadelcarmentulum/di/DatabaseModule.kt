@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import victor.android.sargazocancnplayadelcarmentulum.data.local.Migrations
 import victor.android.sargazocancnplayadelcarmentulum.data.local.SargazoDatabase
 import victor.android.sargazocancnplayadelcarmentulum.data.local.dao.BeachDao
 import victor.android.sargazocancnplayadelcarmentulum.data.local.dao.LevelRecordDao
@@ -26,6 +27,7 @@ object DatabaseModule {
     ): SargazoDatabase =
         Room.databaseBuilder(context, SargazoDatabase::class.java, SargazoDatabase.NAME)
             .addCallback(seedCallback)
+            .addMigrations(*Migrations.ALL)
             .build()
 
     @Provides
