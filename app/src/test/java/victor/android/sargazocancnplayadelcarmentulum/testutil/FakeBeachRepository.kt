@@ -28,7 +28,11 @@ class FakeBeachRepository : BeachRepository {
     override suspend fun setFavorite(beachId: Long, isFavorite: Boolean) {
         beaches.value = beaches.value.map { if (it.id == beachId) it.copy(isFavorite = isFavorite) else it }
     }
-    override suspend fun setNotificationsEnabled(beachId: Long, enabled: Boolean) = Unit
+    override suspend fun setNotificationsEnabled(beachId: Long, enabled: Boolean) {
+        beaches.value = beaches.value.map {
+            if (it.id == beachId) it.copy(notificationsEnabled = enabled) else it
+        }
+    }
     override suspend fun saveLevelRecords(records: List<LevelRecord>) = Unit
     /** Última fecha límite con la que se pidió borrar registros (null si nunca se pidió). */
     var lastDeletedBefore: LocalDate? = null

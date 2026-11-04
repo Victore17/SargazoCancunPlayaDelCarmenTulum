@@ -195,4 +195,15 @@
     </plurals>
     <string name="notification_change_more">Más sargazo en %1$s: pasó de %2$s a %3$s</string>
     <string name="notification_change_less">Menos sargazo en %1$s: pasó de %2$s a %3$s</string>
+
+    <!-- Ajustes -->
+    <string name="settings_section_general">Notificaciones</string>
+    <string name="settings_all_title">Todas las notificaciones</string>
+    <string name="settings_all_description">Al apagarlo se apagan todas. Al encenderlo se restaura tu configuración anterior.</string>
+    <string name="settings_general_update_title">Actualización del semáforo</string>
+    <string name="settings_general_update_description">Avisa cuando hay un semáforo nuevo.</string>
+    <string name="settings_favorite_changes_title">Cambios en favoritas</string>
+    <string name="settings_favorite_changes_description">Avisa si una favorita tiene más o menos sargazo.</string>
+    <string name="settings_section_favorites">Playas favoritas</string>
+    <string name="settings_favorites_empty">Cuando agregues playas favoritas podrás elegir aquí de cuáles recibir avisos.</string>
 </resources>
