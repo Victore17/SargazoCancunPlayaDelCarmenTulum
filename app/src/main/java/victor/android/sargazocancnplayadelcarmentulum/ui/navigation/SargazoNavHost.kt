@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.toRoute
 import victor.android.sargazocancnplayadelcarmentulum.ui.admin.AdminScreen
 import victor.android.sargazocancnplayadelcarmentulum.ui.detail.BeachDetailScreen
 import victor.android.sargazocancnplayadelcarmentulum.ui.favorites.FavoritesScreen
@@ -32,8 +31,8 @@ fun SargazoNavHost(
         composable<FavoritesRoute> { FavoritesScreen(onBeachClick = openBeachDetail) }
         composable<SettingsRoute> { SettingsScreen() }
         composable<AdminRoute> { AdminScreen() }
-        composable<BeachDetailRoute> { entry ->
-            BeachDetailScreen(beachId = entry.toRoute<BeachDetailRoute>().beachId)
+        composable<BeachDetailRoute> {
+            BeachDetailScreen(onBack = { navController.popBackStack() })
         }
     }
 }

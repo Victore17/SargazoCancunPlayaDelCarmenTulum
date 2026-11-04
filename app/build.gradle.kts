@@ -96,6 +96,11 @@ dependencies {
     // ML Kit: lectura de los nombres de las playas en la imagen
     implementation(libs.mlkit.text.recognition)
 
+    // Red: clima y estado del mar con Open-Meteo
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
+    implementation(libs.okhttp)
+
     // Coil: vista previa de la foto elegida
     implementation(libs.coil.compose)
 

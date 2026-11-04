@@ -18,7 +18,6 @@
     <string name="map_loading">Cargando mapa…</string>
     <string name="map_content_description">Mapa de la zona de playas de Cancún a Tulum</string>
     <string name="map_attribution">Mapa © colaboradores de OpenStreetMap</string>
-    <string name="beach_detail_id">Playa con id %d</string>
 
     <!-- Fuente de datos y aviso -->
     <string name="data_source">Fuente: semáforo de sargazo de la SEMA Quintana Roo, con datos de la Red de Monitoreo del Sargazo.</string>
@@ -43,6 +42,68 @@
     <string name="map_show_less">Ver menos</string>
     <string name="map_sync_error">No se pudo actualizar. Se muestra el último semáforo guardado.</string>
     <string name="map_refresh">Actualizar</string>
+
+    <!-- Detalle de playa -->
+    <string name="detail_back">Volver</string>
+    <string name="detail_favorite_add">Agregar a favoritas</string>
+    <string name="detail_favorite_remove">Quitar de favoritas</string>
+    <string name="detail_not_found">No se encontró la playa.</string>
+    <string name="detail_no_location">Sin ubicación en el mapa</string>
+    <string name="detail_current_level">Nivel actual</string>
+    <string name="detail_updated">Actualizado el %1$s</string>
+    <string name="detail_no_level">Esta playa no aparece en ningún semáforo de los últimos dos meses.</string>
+    <string name="detail_history_title">Historial de los últimos 2 meses</string>
+    <string name="detail_history_empty">Todavía no hay registros de esta playa.</string>
+
+    <string name="detail_conditions_title">Clima y mar</string>
+    <string name="detail_conditions_loading">Consultando el clima…</string>
+    <string name="detail_conditions_error">No se pudo consultar el clima. Revisa tu conexión.</string>
+    <string name="detail_conditions_no_location">Esta playa no tiene ubicación, así que no se puede consultar el clima.</string>
+    <string name="detail_conditions_no_air">No hay datos del clima para esta ubicación.</string>
+    <string name="detail_conditions_no_sea">No hay datos del mar para esta ubicación.</string>
+    <string name="detail_retry">Reintentar</string>
+    <string name="detail_observed_at">Medido a las %1$s</string>
+    <string name="detail_weather_credit">Clima y oleaje: Open-Meteo.com</string>
+
+    <string name="detail_label_temperature">Temperatura</string>
+    <string name="detail_label_feels_like">Sensación térmica</string>
+    <string name="detail_label_humidity">Humedad</string>
+    <string name="detail_label_wind">Viento</string>
+    <string name="detail_label_sea_state">Estado del mar</string>
+    <string name="detail_label_waves">Oleaje</string>
+    <string name="detail_label_sea_temperature">Temperatura del mar</string>
+    <string name="detail_value_celsius">%1$.0f °C</string>
+    <string name="detail_value_percent">%1$d %%</string>
+    <string name="detail_value_wind">%1$.0f km/h del %2$s</string>
+    <string name="detail_value_wind_speed">%1$.0f km/h</string>
+    <string name="detail_value_waves">%1$.1f m</string>
+    <string name="detail_value_waves_period">%1$.1f m, cada %2$.0f s</string>
+
+    <string name="weather_clear">Despejado</string>
+    <string name="weather_mainly_clear">Mayormente despejado</string>
+    <string name="weather_partly_cloudy">Parcialmente nublado</string>
+    <string name="weather_overcast">Nublado</string>
+    <string name="weather_fog">Niebla</string>
+    <string name="weather_drizzle">Llovizna</string>
+    <string name="weather_rain">Lluvia</string>
+    <string name="weather_rain_showers">Chubascos</string>
+    <string name="weather_thunderstorm">Tormenta eléctrica</string>
+    <string name="weather_unknown">Sin información del cielo</string>
+
+    <string name="sea_state_calm">En calma</string>
+    <string name="sea_state_slight">Poco oleaje</string>
+    <string name="sea_state_moderate">Oleaje moderado</string>
+    <string name="sea_state_rough">Oleaje fuerte</string>
+
+    <!-- Puntos cardinales (de dónde viene el viento) -->
+    <string name="compass_n">norte</string>
+    <string name="compass_ne">noreste</string>
+    <string name="compass_e">este</string>
+    <string name="compass_se">sureste</string>
+    <string name="compass_s">sur</string>
+    <string name="compass_sw">suroeste</string>
+    <string name="compass_w">oeste</string>
+    <string name="compass_nw">noroeste</string>
 
     <!-- Administración (pantalla oculta) -->
     <string name="admin_title">Administración</string>

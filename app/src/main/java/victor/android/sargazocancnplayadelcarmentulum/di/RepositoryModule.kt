@@ -12,12 +12,14 @@ import victor.android.sargazocancnplayadelcarmentulum.data.remote.SemaforoRemote
 import victor.android.sargazocancnplayadelcarmentulum.data.repository.BeachRepositoryImpl
 import victor.android.sargazocancnplayadelcarmentulum.data.repository.SemaforoRepositoryImpl
 import victor.android.sargazocancnplayadelcarmentulum.data.repository.SettingsRepositoryImpl
+import victor.android.sargazocancnplayadelcarmentulum.data.repository.WeatherRepositoryImpl
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.AdminAuthRepository
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.BeachRepository
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.GoogleIdTokenProvider
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.SemaforoImageReader
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.SemaforoRepository
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.SettingsRepository
+import victor.android.sargazocancnplayadelcarmentulum.domain.repository.WeatherRepository
 import victor.android.sargazocancnplayadelcarmentulum.ui.shell.ElapsedTimeSource
 import victor.android.sargazocancnplayadelcarmentulum.ui.shell.SystemElapsedTimeSource
 import javax.inject.Singleton
@@ -44,6 +46,9 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindAdminAuthRepository(impl: FirebaseAdminAuthRepository): AdminAuthRepository
+
+    @Binds
+    abstract fun bindWeatherRepository(impl: WeatherRepositoryImpl): WeatherRepository
 
     @Binds
     abstract fun bindGoogleIdTokenProvider(impl: CredentialManagerGoogleIdTokenProvider): GoogleIdTokenProvider
