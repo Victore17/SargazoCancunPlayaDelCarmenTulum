@@ -181,4 +181,18 @@
     <string name="admin_error_not_semaforo">La imagen no parece un semáforo de sargazo.</string>
     <string name="admin_error_nothing_to_publish">No hay ninguna playa con nivel para publicar.</string>
     <string name="admin_error_publish">No se pudo publicar. Revisa tu conexión y que tu cuenta tenga permiso.</string>
+    <!-- Notificaciones -->
+    <string name="notification_channel_general">Actualización del semáforo</string>
+    <string name="notification_channel_general_description">Avisa cuando se publica un semáforo nuevo.</string>
+    <string name="notification_channel_favorites">Cambios en favoritas</string>
+    <string name="notification_channel_favorites_description">Avisa cuando una playa favorita tiene más o menos sargazo.</string>
+    <string name="notification_general_title">Nuevo semáforo de sargazo</string>
+    <string name="notification_general_text">Ya hay información nueva. Entra para revisar el nivel de las playas.</string>
+    <string name="notification_favorites_title">Cambios en tus playas favoritas</string>
+    <plurals name="notification_favorites_summary">
+        <item quantity="one">%1$d playa favorita cambió de nivel</item>
+        <item quantity="other">%1$d playas favoritas cambiaron de nivel</item>
+    </plurals>
+    <string name="notification_change_more">Más sargazo en %1$s: pasó de %2$s a %3$s</string>
+    <string name="notification_change_less">Menos sargazo en %1$s: pasó de %2$s a %3$s</string>
 </resources>

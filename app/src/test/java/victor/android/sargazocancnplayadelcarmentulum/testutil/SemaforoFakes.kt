@@ -45,8 +45,12 @@ class FakeSemaforoRepository : SemaforoRepository {
     /** Si no es null, refresh() espera a que se complete (para probar el estado "actualizando"). */
     var refreshGate: CompletableDeferred<Unit>? = null
 
+    /** Se ejecuta durante refresh(): sirve para simular que llegan datos nuevos a Room. */
+    var onRefresh: (() -> Unit)? = null
+
     override suspend fun refresh() {
         refreshCount++
+        onRefresh?.invoke()
         refreshGate?.await()
         refreshError?.let { throw it }
     }

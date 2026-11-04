@@ -13,6 +13,8 @@ import victor.android.sargazocancnplayadelcarmentulum.data.repository.BeachRepos
 import victor.android.sargazocancnplayadelcarmentulum.data.repository.SemaforoRepositoryImpl
 import victor.android.sargazocancnplayadelcarmentulum.data.repository.SettingsRepositoryImpl
 import victor.android.sargazocancnplayadelcarmentulum.data.repository.WeatherRepositoryImpl
+import victor.android.sargazocancnplayadelcarmentulum.data.notification.AndroidSemaforoNotifier
+import victor.android.sargazocancnplayadelcarmentulum.domain.notification.SemaforoNotifier
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.AdminAuthRepository
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.BeachRepository
 import victor.android.sargazocancnplayadelcarmentulum.domain.repository.GoogleIdTokenProvider
@@ -55,6 +57,9 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindSemaforoImageReader(impl: MlKitSemaforoImageReader): SemaforoImageReader
+
+    @Binds
+    abstract fun bindSemaforoNotifier(impl: AndroidSemaforoNotifier): SemaforoNotifier
 
     @Binds
     abstract fun bindElapsedTimeSource(impl: SystemElapsedTimeSource): ElapsedTimeSource

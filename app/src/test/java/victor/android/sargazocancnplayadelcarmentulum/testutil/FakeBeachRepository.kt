@@ -30,5 +30,10 @@ class FakeBeachRepository : BeachRepository {
     }
     override suspend fun setNotificationsEnabled(beachId: Long, enabled: Boolean) = Unit
     override suspend fun saveLevelRecords(records: List<LevelRecord>) = Unit
-    override suspend fun deleteLevelRecordsBefore(date: LocalDate) = Unit
+    /** Última fecha límite con la que se pidió borrar registros (null si nunca se pidió). */
+    var lastDeletedBefore: LocalDate? = null
+
+    override suspend fun deleteLevelRecordsBefore(date: LocalDate) {
+        lastDeletedBefore = date
+    }
 }
