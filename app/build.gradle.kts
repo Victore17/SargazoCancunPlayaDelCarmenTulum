@@ -59,6 +59,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
 
+    // Mapa con MapLibre y mosaicos de OpenStreetMap (sin clave de API)
+    implementation(libs.maplibre.compose)
+    implementation(libs.maplibre.native.runtime.opengl)
+
     // Navegación con rutas tipadas
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)

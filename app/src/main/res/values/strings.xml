@@ -14,11 +14,9 @@
     <string name="screen_settings_title">Ajustes</string>
     <string name="screen_beach_detail_title">Detalle de playa</string>
     <string name="placeholder_coming_soon">Esta pantalla estará disponible pronto.</string>
-    <string name="map_loading">Cargando playas…</string>
-    <plurals name="map_known_beaches">
-        <item quantity="one">%d playa conocida en la base de datos</item>
-        <item quantity="other">%d playas conocidas en la base de datos</item>
-    </plurals>
+    <string name="map_loading">Cargando mapa…</string>
+    <string name="map_content_description">Mapa de la zona de playas de Cancún a Tulum</string>
+    <string name="map_attribution">Mapa © colaboradores de OpenStreetMap</string>
     <string name="beach_detail_id">Playa con id %d</string>
 
     <!-- Fuente de datos y aviso -->

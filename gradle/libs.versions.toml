@@ -7,6 +7,8 @@ lifecycle = "2.11.0"
 activityCompose = "1.13.0"
 composeBom = "2026.09.00"
 navigation = "2.10.2"
+maplibreCompose = "0.20.0"
+maplibreNativeFfi = "0.202610.0"
 hilt = "2.60.1"
 androidxHilt = "1.4.0"
 room = "2.8.5"
@@ -37,6 +39,11 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 
 # Navegación
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+
+# Mapa (MapLibre + OpenStreetMap)
+maplibre-compose = { group = "org.maplibre.compose", name = "maplibre-compose", version.ref = "maplibreCompose" }
+# Motor nativo de dibujo del mapa (OpenGL); sin esto la app se cierra al abrir el mapa.
+maplibre-native-runtime-opengl = { group = "org.maplibre.nativeffi", name = "maplibre-native-ffi-runtime-opengl-android", version.ref = "maplibreNativeFfi" }
 
 # Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }

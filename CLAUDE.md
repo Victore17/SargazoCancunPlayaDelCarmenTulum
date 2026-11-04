@@ -25,7 +25,7 @@ Reglas del proyecto para Claude Code. Nombre de la app: Sargazo Cancún Playa de
 - Room con KSP para la base de datos local.
 - Coroutines y Flows. Usar StateFlow en los ViewModels, no LiveData.
 - Retrofit, OkHttp y Kotlinx Serialization para red.
-- Maps Compose para el mapa, ML Kit Text Recognition para leer la imagen, WorkManager para tareas en segundo plano, DataStore para ajustes, Coil para imágenes.
+- MapLibre Compose (maplibre-compose) con mosaicos de OpenStreetMap para el mapa, sin clave de API ni cuenta de pago. No usar Google Maps. ML Kit Text Recognition para leer la imagen, WorkManager para tareas en segundo plano, DataStore para ajustes, Coil para imágenes.
 - Versiones estables más recientes, declaradas en gradle/libs.versions.toml y usando el Compose BOM.
 
 ## Estilo de código
@@ -38,7 +38,8 @@ Reglas del proyecto para Claude Code. Nombre de la app: Sargazo Cancún Playa de
 
 ## Seguridad y GitHub
 
-- La clave de Google Maps va en local.properties y nunca se sube al repositorio.
+- El mapa no usa claves de API (MapLibre + OpenStreetMap). Si en el futuro se agrega algún servicio con clave, va en local.properties y nunca se sube al repositorio.
+- Mostrar siempre la atribución "© OpenStreetMap" en el mapa y hacer un uso ligero de los mosaicos públicos.
 - Revisa que .gitignore incluya local.properties, archivos de build y claves.
 - No pongas datos personales ni claves en el código.
 

@@ -12,7 +12,7 @@ Nombre de la app: Sargazo Cancún Playa del Carmen Tulum. Proyecto de portafolio
 ## Tecnologías
 
 - Jetpack Compose (pantallas)
-- Maps Compose (mapa de Google)
+- MapLibre Compose (mapa con mosaicos de OpenStreetMap, sin clave ni costo)
 - Hilt (inyección de dependencias)
 - Room (base de datos local)
 - Coroutines + Flows/StateFlow
@@ -29,7 +29,7 @@ Usar siempre las versiones estables más recientes, administradas con el catálo
 - Lifecycle ViewModel Compose (ViewModels y estado)
 - Hilt + hilt-navigation-compose
 - Room con KSP
-- Maps Compose + Play Services Maps
+- MapLibre Compose (maplibre-compose) + runtime OpenGL de MapLibre Native
 - Retrofit + OkHttp + Kotlinx Serialization (llamadas a Open-Meteo)
 - Coil (descargar la imagen del semáforo)
 - ML Kit Text Recognition
@@ -52,9 +52,9 @@ Usar siempre las versiones estables más recientes, administradas con el catálo
 
 ## Etapa 2: Mapa (Sonnet)
 
-- Pantalla principal con Maps Compose.
-- Limitar el mapa a la zona de playas (Tulum a Cancún, con Cozumel si viene en el semáforo) usando latLngBoundsForCameraTarget y minZoomPreference.
-- Clave de Google Maps en archivo local, nunca subida a GitHub.
+- Pantalla principal con MapLibre Compose y mosaicos de OpenStreetMap (sin clave de API, sin costo).
+- Limitar el mapa a la zona de playas (Tulum a Cancún, con Cozumel si viene en el semáforo) usando CameraConstraints (boundingBox, minZoom y maxZoom).
+- Mostrar la atribución "© OpenStreetMap" y hacer un uso ligero de los mosaicos públicos. No se necesita clave.
 
 ## Etapa 3: Leer el semáforo (Opus)
 
@@ -105,7 +105,7 @@ Usar siempre las versiones estables más recientes, administradas con el catálo
 
 - README con descripción, capturas, tecnologías y fuente de datos.
 - Comentarios en el código y textos en strings.xml.
-- Revisar que la clave de Maps no esté en el repositorio.
+- Revisar que no haya claves ni datos personales en el repositorio.
 
 ## Pantallas
 
