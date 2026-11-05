@@ -24,5 +24,5 @@ object MapRegion {
     val initialCenter = GeoPoint(latitude = 20.85, longitude = -87.05)
     const val INITIAL_ZOOM = 7.5f
     const val MIN_ZOOM = 7f
-    const val MAX_ZOOM = 17f
+    const val MAX_ZOOM = 11f
 }
