@@ -13,11 +13,12 @@ An Android portfolio app that shows the official sargassum traffic light ("semá
   <img src="docs/screenshots/list.png" alt="Beach list with search and color filters" width="240">
   <img src="docs/screenshots/favorites.png" alt="Favorite beaches with their current level" width="240">
   <img src="docs/screenshots/settings.png" alt="Notification settings" width="240">
+  <img src="docs/screenshots/about.png" alt="About screen with the data source, unofficial notice and credits" width="240">
 </p>
 
 ## Features
 
-- **Map** of the Cancún–Tulum coast (and Cozumel), with one colored circle per beach. Uses OpenStreetMap tiles.
+- **Map** of the Cancún–Tulum coast (and Cozumel), with one colored circle per beach. The camera stays within the beach area and the zoom is limited to keep the map light. Uses OpenStreetMap tiles.
 - **Beach detail**: current level, date of the latest update, level history, and weather and sea conditions.
 - **Beach list** with search and filter by color.
 - **Favorites**, with the current level of each one.
@@ -25,6 +26,7 @@ An Android portfolio app that shows the official sargassum traffic light ("semá
   - a general alert when a new traffic light is published;
   - an alert when a favorite beach goes up or down in sargassum level, grouped in one notification.
 - **Settings**: a general switch for all notifications, one switch per notification type, and one switch per favorite beach. Turning the general switch back on restores your previous choices.
+- **About the app** (from Settings): the data source, a notice that the app is not official, and the credits for Open-Meteo and OpenStreetMap.
 - **Offline use**: the last published data is stored in a local database, so the app works without internet.
 - **Level history** is kept for two months. Favorites and settings are never deleted.
 
@@ -40,7 +42,7 @@ The sargassum traffic light is published by the SEMA on its official social medi
 
 Firestore security rules allow anyone to read, but only the administrator's account can write. The hidden screen is not a security measure; the rules are.
 
-**Data source:** semáforo de sargazo published by the SEMA Quintana Roo, with data from the Red de Monitoreo del Sargazo. Weather and sea conditions come from [Open-Meteo](https://open-meteo.com/).
+**Data source:** semáforo de sargazo published by the SEMA Quintana Roo, with data from the Red de Monitoreo del Sargazo. Weather and sea conditions come from [Open-Meteo](https://open-meteo.com/). The app shows this information on its About screen.
 
 ## Tech stack
 
