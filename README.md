@@ -11,6 +11,7 @@ An Android portfolio app that shows the official sargassum traffic light ("semá
 <p align="center">
   <img src="docs/screenshots/map.png" alt="Map of the beaches from Cancún to Tulum, colored by sargassum level" width="240">
   <img src="docs/screenshots/list.png" alt="Beach list with search and color filters" width="240">
+  <img src="docs/screenshots/favorites.png" alt="Favorite beaches with their current level" width="240">
   <img src="docs/screenshots/settings.png" alt="Notification settings" width="240">
 </p>
 
