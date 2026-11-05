@@ -19,3 +19,6 @@ google-services.json
 
 # Video de demostración (no se sube al repositorio)
 /demo.mp4
+
+# Configuración local de Android Studio (no se sube al repositorio)
+/.idea/
