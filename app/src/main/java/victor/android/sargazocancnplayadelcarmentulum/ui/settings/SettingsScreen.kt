@@ -1,5 +1,6 @@
 package victor.android.sargazocancnplayadelcarmentulum.ui.settings
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
@@ -16,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,12 +27,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import victor.android.sargazocancnplayadelcarmentulum.R
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.AppSettings
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.Beach
-import victor.android.sargazocancnplayadelcarmentulum.ui.components.DataSourceNotice
 import victor.android.sargazocancnplayadelcarmentulum.ui.theme.SargazoCancúnPlayaDelCarmenTulumTheme
 
 /** Ajustes de notificaciones. */
 @Composable
 fun SettingsScreen(
+    onAboutClick: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = hiltViewModel(),
 ) {
@@ -40,6 +43,7 @@ fun SettingsScreen(
         onGeneralUpdateChanged = viewModel::onGeneralUpdateChanged,
         onFavoriteChangesChanged = viewModel::onFavoriteChangesChanged,
         onBeachChanged = viewModel::onBeachNotificationsChanged,
+        onAboutClick = onAboutClick,
         modifier = modifier,
     )
 }
@@ -51,6 +55,7 @@ private fun SettingsContent(
     onGeneralUpdateChanged: (Boolean) -> Unit,
     onFavoriteChangesChanged: (Boolean) -> Unit,
     onBeachChanged: (Long, Boolean) -> Unit,
+    onAboutClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     if (uiState.isLoading) {
@@ -110,7 +115,18 @@ private fun SettingsContent(
             }
         }
         item {
-            DataSourceNotice(modifier = Modifier.fillMaxWidth().padding(16.dp))
+            HorizontalDivider(modifier = Modifier.padding(top = 8.dp))
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_about_title)) },
+                supportingContent = { Text(stringResource(R.string.settings_about_description)) },
+                trailingContent = {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_chevron_right),
+                        contentDescription = null,
+                    )
+                },
+                modifier = Modifier.clickable(onClick = onAboutClick),
+            )
         }
     }
 }
@@ -158,6 +174,7 @@ private fun SettingsPreview() {
             onGeneralUpdateChanged = {},
             onFavoriteChangesChanged = {},
             onBeachChanged = { _, _ -> },
+            onAboutClick = {},
         )
     }
 }
@@ -176,6 +193,7 @@ private fun SettingsAllOffPreview() {
             onGeneralUpdateChanged = {},
             onFavoriteChangesChanged = {},
             onBeachChanged = { _, _ -> },
+            onAboutClick = {},
         )
     }
 }

@@ -45,7 +45,6 @@ import victor.android.sargazocancnplayadelcarmentulum.domain.model.LevelRecord
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.SargassumLevel
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.SeaConditions
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.WeatherCondition
-import victor.android.sargazocancnplayadelcarmentulum.ui.components.DataSourceNotice
 import victor.android.sargazocancnplayadelcarmentulum.ui.components.LevelDot
 import victor.android.sargazocancnplayadelcarmentulum.ui.components.LevelLabel
 import victor.android.sargazocancnplayadelcarmentulum.ui.theme.SargazoCancúnPlayaDelCarmenTulumTheme
@@ -150,16 +149,6 @@ private fun DetailList(
         item { CurrentLevelCard(uiState) }
         item { ConditionsCard(uiState.conditions, onRetry) }
         item { HistoryCard(uiState.history) }
-        item {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Text(stringResource(R.string.detail_weather_credit), style = MaterialTheme.typography.bodySmall)
-                DataSourceNotice()
-            }
-        }
     }
 }
 

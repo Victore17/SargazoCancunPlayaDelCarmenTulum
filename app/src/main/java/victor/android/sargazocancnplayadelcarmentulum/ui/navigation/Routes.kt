@@ -16,6 +16,10 @@ data object FavoritesRoute
 @Serializable
 data object SettingsRoute
 
+/** Información de la app: fuente de los datos, aviso de que no es oficial y créditos. */
+@Serializable
+data object AboutRoute
+
 /** Pantalla oculta de administración (7 toques en "Ajustes"). */
 @Serializable
 data object AdminRoute

@@ -20,7 +20,7 @@
     <string name="map_attribution">Mapa © colaboradores de OpenStreetMap</string>
 
     <!-- Fuente de datos y aviso -->
-    <string name="data_source">Fuente: semáforo de sargazo de la SEMA Quintana Roo, con datos de la Red de Monitoreo del Sargazo.</string>
+    <string name="data_source">Semáforo de sargazo de la SEMA Quintana Roo, con datos de la Red de Monitoreo del Sargazo.</string>
     <string name="unofficial_disclaimer">Esta app no es oficial ni está afiliada al Gobierno de Quintana Roo.</string>
 
     <!-- Niveles de sargazo (nombres del semáforo oficial) -->
@@ -63,7 +63,6 @@
     <string name="detail_conditions_no_sea">No hay datos del mar para esta ubicación.</string>
     <string name="detail_retry">Reintentar</string>
     <string name="detail_observed_at">Medido a las %1$s</string>
-    <string name="detail_weather_credit">Clima y oleaje: Open-Meteo.com</string>
 
     <string name="detail_label_temperature">Temperatura</string>
     <string name="detail_label_feels_like">Sensación térmica</string>
@@ -206,4 +205,14 @@
     <string name="settings_favorite_changes_description">Avisa si una favorita tiene más o menos sargazo.</string>
     <string name="settings_section_favorites">Playas favoritas</string>
     <string name="settings_favorites_empty">Cuando agregues playas favoritas podrás elegir aquí de cuáles recibir avisos.</string>
+
+    <!-- Acerca de la app -->
+    <string name="settings_about_title">Acerca de la app</string>
+    <string name="settings_about_description">Fuente de los datos y créditos</string>
+    <string name="about_section_data">Fuente de los datos</string>
+    <string name="about_section_notice">Aviso</string>
+    <string name="about_section_weather">Clima y oleaje</string>
+    <string name="about_weather_credit">Datos de Open-Meteo.com</string>
+    <string name="about_section_map">Mapa</string>
+    <string name="about_map_credit">© colaboradores de OpenStreetMap</string>
 </resources>

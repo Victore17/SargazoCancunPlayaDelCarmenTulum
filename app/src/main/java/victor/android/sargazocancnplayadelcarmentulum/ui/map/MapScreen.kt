@@ -55,7 +55,6 @@ import victor.android.sargazocancnplayadelcarmentulum.R
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.GeoPoint
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.MapRegion
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.SargassumLevel
-import victor.android.sargazocancnplayadelcarmentulum.ui.components.DataSourceNotice
 import victor.android.sargazocancnplayadelcarmentulum.ui.components.LevelDot
 import victor.android.sargazocancnplayadelcarmentulum.ui.theme.SargazoCancúnPlayaDelCarmenTulumTheme
 import victor.android.sargazocancnplayadelcarmentulum.ui.theme.color
@@ -158,7 +157,6 @@ private fun MapInfoCard(
                             style = MaterialTheme.typography.bodySmall,
                         )
                     }
-                    DataSourceNotice()
                 }
             }
             Row(verticalAlignment = Alignment.CenterVertically) {

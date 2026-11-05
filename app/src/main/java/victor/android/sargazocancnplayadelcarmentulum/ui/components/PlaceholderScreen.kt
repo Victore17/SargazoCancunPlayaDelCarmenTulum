@@ -44,39 +44,10 @@ fun PlaceholderScreen(
     }
 }
 
-/** Fuente de los datos y aviso de que la app no es oficial. */
-@Composable
-fun DataSourceNotice(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
-        Text(
-            text = stringResource(R.string.data_source),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Center,
-        )
-        Text(
-            text = stringResource(R.string.unofficial_disclaimer),
-            style = MaterialTheme.typography.bodySmall,
-            textAlign = TextAlign.Center,
-        )
-    }
-}
-
 @Preview(showBackground = true)
 @Composable
 private fun PlaceholderScreenPreview() {
     SargazoCancúnPlayaDelCarmenTulumTheme {
         PlaceholderScreen(titleRes = R.string.screen_favorites_title)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun DataSourceNoticePreview() {
-    SargazoCancúnPlayaDelCarmenTulumTheme {
-        DataSourceNotice()
     }
 }

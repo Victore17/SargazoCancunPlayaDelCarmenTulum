@@ -37,7 +37,6 @@ import victor.android.sargazocancnplayadelcarmentulum.domain.model.BeachStatus
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.GeoPoint
 import victor.android.sargazocancnplayadelcarmentulum.domain.model.SargassumLevel
 import victor.android.sargazocancnplayadelcarmentulum.ui.components.BeachRow
-import victor.android.sargazocancnplayadelcarmentulum.ui.components.DataSourceNotice
 import victor.android.sargazocancnplayadelcarmentulum.ui.components.LevelDot
 import victor.android.sargazocancnplayadelcarmentulum.ui.theme.SargazoCancúnPlayaDelCarmenTulumTheme
 import victor.android.sargazocancnplayadelcarmentulum.ui.theme.labelRes
@@ -174,9 +173,6 @@ private fun BeachItems(
                 onToggleFavorite = { onToggleFavorite(status) },
             )
             HorizontalDivider()
-        }
-        item {
-            DataSourceNotice(modifier = Modifier.fillMaxWidth().padding(16.dp))
         }
     }
 }
